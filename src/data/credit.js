@@ -1,7 +1,7 @@
-// Fill these in to show a credit line in the footer. Left empty, nothing
-// renders, so no name or link is ever invented.
+// Credit line in the footer and author in the structured data. Leave a field
+// empty to hide it; nothing is ever invented.
 export const CREDIT = {
-  name: '',
-  portfolioUrl: '',
-  linkedinUrl: '',
+  name: 'Shyine Makin',
+  portfolioUrl: 'https://www.shyinemakin.com',
+  linkedinUrl: 'https://www.linkedin.com/in/shyinemakin',
 }
