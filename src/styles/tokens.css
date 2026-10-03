@@ -1,0 +1,88 @@
+/* Site tokens. Mirrors src/data/sitePalette.js, which the contrast audit
+   reads, so any change here must be made there too. */
+:root {
+  /* Brand constants: the creatives, menu sheet and footer are artwork and
+     keep these in both themes. */
+  --spruce: #23483A;
+  --spruce-deep: #1B382D;
+  --cranberry: #9B2335;
+  --cream: #F6F0E1;
+  --wheat: #E9D9A6;
+
+  /* Semantic tokens (light). Dark values live in the theme blocks below. */
+  --paper: #EDEFE8;
+  --surface: #FFFFFF;
+  --surface-2: #FAFBF8;
+  --wash: #E2E6DD;
+  --ink: #17221C;
+  --muted: #4A554E;
+  --rule: #C5CCC2;
+  --accent: #23483A;
+  --accent-fill: #23483A;
+  --accent-fill-hover: #1B382D;
+  --on-accent: #F6F0E1;
+  --spec: #0B6585;
+  --danger: #9B2335;
+  --pass-bg: #E1ECE5; --pass-fg: #1E5236;
+  --fail-bg: #F7E3E6; --fail-fg: #8C1D2E;
+  --fail-tint: #FCF4F5;
+  --hold-bg: #F3EBD3; --hold-fg: #5E4708;
+  --shadow-ink: 23, 34, 28;
+  color-scheme: light;
+
+  /* scales */
+  --r-sm: 4px;
+  --r-md: 8px;
+  --r-pill: 999px;
+  --radius: var(--r-sm);
+  --z-sticky: 20;
+  --z-header: 50;
+  --z-overlay: 80;
+  --z-modal: 90;
+  --z-skip: 100;
+
+  --serif: 'Young Serif', 'Young Serif Fallback', Georgia, serif;
+  --sans: 'Archivo', 'Archivo Fallback', system-ui, sans-serif;
+
+  /* type scale, ratio 1.25 from a 17px body */
+  --t-xs: 0.8125rem;
+  --t-sm: 0.9375rem;
+  --t-md: 1.0625rem;
+  --t-lg: 1.3125rem;
+  --t-xl: 1.625rem;
+  --t-2xl: 2.0625rem;
+  --t-3xl: clamp(2.25rem, 1.6rem + 2.6vw, 3.5rem);
+  --t-hero: clamp(2.5rem, 1.5rem + 4.4vw, 4.75rem);
+
+  --gutter: clamp(16px, 4vw, 48px);
+  --measure: 68ch;
+  --wide: 1240px;
+  --header-h: 64px;
+}
+
+/* Dark theme: follows the OS unless the visitor picked Light in the menu,
+   or forced with the Dark choice. Every pair is checked in sitePalette.js. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --paper: #111915; --surface: #18221D; --surface-2: #151F1A; --wash: #1F2B25;
+    --ink: #E8ECE6; --muted: #A6B3AA; --rule: #34443B;
+    --accent: #8CCBA9; --accent-fill: #8CCBA9; --accent-fill-hover: #A8DCC0; --on-accent: #0F1D17;
+    --spec: #74C2DD; --danger: #F2919F;
+    --pass-bg: #173527; --pass-fg: #9EDDB7;
+    --fail-bg: #3A1A20; --fail-fg: #FFB4BF; --fail-tint: #24161A;
+    --hold-bg: #352C12; --hold-fg: #EED38A;
+    --shadow-ink: 0, 0, 0;
+    color-scheme: dark;
+  }
+}
+:root[data-theme='dark'] {
+  --paper: #111915; --surface: #18221D; --surface-2: #151F1A; --wash: #1F2B25;
+  --ink: #E8ECE6; --muted: #A6B3AA; --rule: #34443B;
+  --accent: #8CCBA9; --accent-fill: #8CCBA9; --accent-fill-hover: #A8DCC0; --on-accent: #0F1D17;
+  --spec: #74C2DD; --danger: #F2919F;
+  --pass-bg: #173527; --pass-fg: #9EDDB7;
+  --fail-bg: #3A1A20; --fail-fg: #FFB4BF; --fail-tint: #24161A;
+  --hold-bg: #352C12; --hold-fg: #EED38A;
+  --shadow-ink: 0, 0, 0;
+  color-scheme: dark;
+}

@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="ad.size" content="width=300,height=250">
+<title>Birchway Market, Home for the Holidays, 300x250 animated</title>
+<!--
+  BirchwayMarket_Holiday2026_Animated_300x250_v1
+  Hand-off HTML5 build representing the Adobe Animate output for the
+  medium rectangle. Self-contained: inline CSS, inline SVG, inline JS.
+  Spec: 300x250, <=150 KB initial load, <=30 s animation, <=3 loops.
+  Timeline per loop (5 s): logo reveal 0-0.7 s, headline fade 0.6-1.4 s,
+  artwork in 1.2-2.0 s, CTA in 1.9 s then pulse x2, hold, fade to reset.
+  Loop 3 stops on the end frame. prefers-reduced-motion shows the end frame.
+  Web font loads from Google Fonts and is not counted in package weight.
+-->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600&family=Young+Serif&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:300px;height:250px;overflow:hidden;background:#23483A}
+#ad{position:relative;display:block;width:300px;height:250px;overflow:hidden;background:#23483A;color:#F6F0E1;text-decoration:none;font-family:Archivo,Arial,sans-serif}
+.logo{position:absolute;left:14px;top:14px;display:flex;align-items:center;gap:7px}
+.mark{width:24px;height:24px}
+.word{font-family:'Young Serif',Georgia,serif;font-size:10px;line-height:.98}
+.hl{position:absolute;left:14px;top:64px;width:148px;font-family:'Young Serif',Georgia,serif;font-size:25px;line-height:1.02;letter-spacing:-.01em;text-wrap:balance}
+.cta{position:absolute;left:14px;top:154px;background:#9B2335;color:#F6F0E1;font-weight:600;font-size:11.5px;line-height:1.1;padding:7px 11px;border-radius:999px;white-space:nowrap}
+.legal{position:absolute;left:14px;top:218px;width:132px;font-size:8px;line-height:1.3}
+.art{position:absolute;left:148px;top:52px;width:236px;height:236px}
+.timer{position:absolute;width:1px;height:1px;opacity:0}
+
+/* timeline */
+.run .mark{animation:markIn .7s cubic-bezier(.2,.8,.2,1) both}
+.run .word{animation:wordIn .6s .25s cubic-bezier(.2,.8,.2,1) both}
+.run .hl{animation:fadeUp .8s .6s cubic-bezier(.2,.7,.2,1) both}
+.run .art{animation:artIn .8s 1.2s cubic-bezier(.2,.7,.2,1) both}
+.run .cta{animation:ctaIn .4s 1.9s ease-out both,pulse .9s 2.5s ease-in-out 2}
+.run .legal{animation:fade .4s 2s both}
+.run .stage{animation:out .4s 4.6s ease-in both}
+.run .timer{animation:timer 5s linear both}
+.end .stage{animation:none}
+.end .timer{animation:none}
+
+@keyframes markIn{from{transform:scale(.2) rotate(-40deg);opacity:0}to{transform:none;opacity:1}}
+@keyframes wordIn{from{clip-path:inset(0 100% 0 0);opacity:0}to{clip-path:inset(0 0 0 0);opacity:1}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes artIn{from{opacity:0;transform:translateX(40px) rotate(12deg)}to{opacity:1;transform:none}}
+@keyframes ctaIn{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:none}}
+@keyframes pulse{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(246,240,225,.0)}50%{transform:scale(1.07);box-shadow:0 0 0 6px rgba(246,240,225,.18)}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes out{from{opacity:1}to{opacity:0}}
+@keyframes timer{from{transform:translateX(0)}to{transform:translateX(1px)}}
+.paused *{animation-play-state:paused!important}
+@media (prefers-reduced-motion:reduce){.run *,.end *{animation:none!important}}
+</style>
+</head>
+<body>
+<a id="ad" href="#" tabindex="-1" aria-label="Birchway Market: Home for the Holidays. Shop the holiday table.">
+  <div class="stage">
+    <svg class="art" viewBox="0 0 600 600" aria-hidden="true">
+      <defs><clipPath id="f"><circle cx="300" cy="300" r="128"/></clipPath></defs>
+      <circle cx="300" cy="300" r="205" fill="#E7DCC2"/>
+      <circle cx="300" cy="300" r="186" fill="none" stroke="#F6F0E1" stroke-width="5"/>
+      <circle cx="300" cy="300" r="154" fill="#C98A3D" stroke="#C98A3D" stroke-width="10" stroke-dasharray="2 27" stroke-linecap="round"/>
+      <circle cx="300" cy="300" r="128" fill="#8E1F30"/>
+      <g clip-path="url(#f)" fill="#DDA552">
+        <rect x="197" y="160" width="26" height="280" rx="6"/><rect x="242" y="160" width="26" height="280" rx="6"/><rect x="287" y="160" width="26" height="280" rx="6"/><rect x="332" y="160" width="26" height="280" rx="6"/><rect x="377" y="160" width="26" height="280" rx="6"/>
+        <g fill="#C98A3D"><rect x="160" y="197" width="280" height="26" rx="6"/><rect x="160" y="242" width="280" height="26" rx="6"/><rect x="160" y="287" width="280" height="26" rx="6"/><rect x="160" y="332" width="280" height="26" rx="6"/><rect x="160" y="377" width="280" height="26" rx="6"/></g>
+      </g>
+      <g transform="translate(92 300) rotate(-18) scale(.95)"><path d="M0-62c13 0 17 19 19 35 21 17 27 52 11 75-14 19-46 19-60 0-16-23-10-58 11-75 2-16 6-35 19-35z" fill="#D8B24A"/><path d="M0-62c0-10 2-17 6-22" stroke="#5B3A1E" stroke-width="5" stroke-linecap="round" fill="none"/></g>
+      <circle cx="470" cy="150" r="40" fill="#E07B2A"/><circle cx="540" cy="232" r="30" fill="#E07B2A"/><circle cx="140" cy="505" r="34" fill="#E07B2A"/>
+      <g fill="#9B2335"><circle cx="200" cy="60" r="10"/><circle cx="218" cy="66" r="10"/><circle cx="208" cy="80" r="10"/><circle cx="186" cy="74" r="10"/><circle cx="360" cy="520" r="10"/><circle cx="378" cy="526" r="10"/><circle cx="368" cy="540" r="10"/></g>
+    </svg>
+    <div class="logo">
+      <svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="32" fill="#F6F0E1"/><path d="M32 11c10.5 8 14.5 17.5 12.4 26.6C42.7 45 37.6 49.6 32 51c-5.6-1.4-10.7-6-12.4-13.4C17.5 28.5 21.5 19 32 11z" fill="#23483A"/><path d="M32 17v38" stroke="#F6F0E1" stroke-width="2.6" stroke-linecap="round"/><path d="M25.5 29.5h4.5M34 35.5h5.5M25 42h5" stroke="#F6F0E1" stroke-width="2.6" stroke-linecap="round"/></svg>
+      <span class="word">Birchway<br>Market</span>
+    </div>
+    <p class="hl">Home for the Holidays</p>
+    <span class="cta">Shop the holiday table</span>
+    <p class="legal">Offer details: legal placeholder. Illustrative only.</p>
+  </div>
+  <div class="timer"></div>
+</a>
+<script>
+// Ad-server click-through. The serving platform injects clickTag; left
+// empty here so the portfolio demo goes nowhere when clicked.
+var clickTag = '';
+(function () {
+  var MAX_LOOPS = 3;
+  var ad = document.getElementById('ad');
+  var timer = ad.querySelector('.timer');
+  var loop = 0;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  ad.addEventListener('click', function (e) {
+    e.preventDefault();
+    if (clickTag) window.open(clickTag, '_blank');
+  });
+
+  function report(state) {
+    try { parent.postMessage({ source: 'bw-ad', state: state, loop: loop, max: MAX_LOOPS }, '*'); } catch (e) {}
+  }
+
+  function start() {
+    ad.classList.remove('end', 'paused', 'run');
+    if (reduce) { loop = MAX_LOOPS; ad.classList.add('end'); report('reduced'); return; }
+    void ad.offsetWidth; // restart CSS animations
+    loop += 1;
+    ad.classList.add('run');
+    if (loop === MAX_LOOPS) ad.classList.add('end');
+    report('playing');
+  }
+
+  timer.addEventListener('animationend', function () {
+    if (loop < MAX_LOOPS) start(); else { report('ended'); }
+  });
+  // the end frame has no timer animation, so watch the CTA pulse instead
+  ad.querySelector('.cta').addEventListener('animationend', function (e) {
+    if (e.animationName === 'pulse' && loop === MAX_LOOPS) report('ended');
+  });
+
+  window.addEventListener('message', function (e) {
+    var d = e.data || {};
+    if (d.target !== 'bw-ad') return;
+    if (d.cmd === 'pause') { ad.classList.add('paused'); report('paused'); }
+    if (d.cmd === 'play') { ad.classList.remove('paused'); report('playing'); }
+    if (d.cmd === 'replay') { loop = 0; start(); }
+  });
+
+  start();
+})();
+</script>
+</body>
+</html>
