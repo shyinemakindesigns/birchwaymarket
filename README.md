@@ -16,6 +16,10 @@ React 19 + React Router 7 + Vite 8, same stack as the Beacon Path build. No UI l
 | `/board` | Kanban workload board (filter, move, WIP limit) |
 | `/process` | Seven-step process flow |
 | `/brand-direction` | Brand direction B: the Claude Design identity (Gloock wordmark, arch), reviewed and corrected, with the guideline sheet rebuilt |
+| `/overview` | Project overview: summary, reading paths by role, skills, tools, FAQ |
+| `/strategy` | Marketing strategy: audience, research plan, competitors, platform plan, traffic forecast, A/B tests |
+| `/copy` | Copy and search: platform copy with character checks, social posts, hashtags, SEO/AEO/GEO, UTMs |
+| `/brand-graphics` | Layered 3D diorama, animated vector kit, compositions and patterns as SVG |
 | `/reflection` | How this was built, AI disclosure, live contrast table |
 
 ## How the creatives work
@@ -81,3 +85,12 @@ Young Serif and Archivo (variable, weight + width) are self-hosted from `public/
 - Cumulative layout shift: 0 on every page.
 
 Birchway Market is fictional. No real retailer's branding, logos or trademarks appear in this project.
+
+
+## SEO
+
+Every page is prerendered with its own title, description, canonical URL, Open Graph tags and JSON-LD (WebSite, CreativeWork, WebPage, BreadcrumbList; FAQPage on /overview). The build writes sitemap.xml, robots.txt and llms.txt using Netlify's `URL` variable, and unknown URLs return a real 404.
+
+## Social assets and portfolio copy
+
+`social/` holds the 12 s layers loop (MP4, 1080 x 1350), the LinkedIn cover PNG and `POSTS.md` (LinkedIn post, Instagram caption, Wix thumbnail title and description). They are rendered from the dev-only `/__social` route.

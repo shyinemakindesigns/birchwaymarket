@@ -2,7 +2,8 @@ import { useEffect, useRef, useState } from 'react'
 import PageIntro from '../components/PageIntro.jsx'
 import FileName from '../components/FileName.jsx'
 import { I } from '../components/icons.jsx'
-import { Pear, Clementine, Berries, Rosemary, BirchLeaf, Pie, ELEMENTS } from '../creative/artKit.jsx'
+import { ELEMENTS } from '../creative/artKit.jsx'
+import { LAYERS, LayerArt } from '../creative/kitLayers.jsx'
 import { COMPOSITIONS, PATTERNS } from '../creative/kitScenes.jsx'
 import { svgMarkup, downloadText, lineCss } from '../lib/svgExport.js'
 import { KIT_MOTION, SCENE_MOTION } from '../creative/kitMotion.js'
@@ -14,53 +15,9 @@ const TONES = [
   { id: 'animated', label: 'Animated', file: 'Animated', note: 'Full colour with a loop for social stickers, email and web. The SVG carries its own animation and stops for reduced motion.' },
 ]
 
-// The table art as four stacked layers, back to front.
-const LAYERS = [
-  { id: 'base', label: 'Background', d: 'Spruce field with the creative’s inner rule' },
-  { id: 'pie', label: 'Pie', d: 'The hero object, always the largest' },
-  { id: 'produce', label: 'Produce', d: 'Pears, clementines and cranberries' },
-  { id: 'garnish', label: 'Garnish', d: 'Rosemary and birch leaves, outside the plate' },
-]
-
 const fileName = (part, ext = 'svg') => `BirchwayMarket_Holiday2026_Kit_${part}_v1.${ext}`
 const pascal = (s) => s.replace(/(^|[\s-])(\w)/g, (_, __, c) => c.toUpperCase()).replace(/[^A-Za-z0-9]/g, '')
 
-function LayerArt({ id, a }) {
-  if (id === 'base') {
-    return (
-      <>
-        <rect width="600" height="600" rx="10" fill="#23483A" />
-        <rect x="18" y="18" width="564" height="564" rx="4" fill="none" stroke="#E9D9A6" strokeWidth="1.5" opacity=".55" />
-      </>
-    )
-  }
-  if (id === 'pie') return <Pie cx={300} cy={300} clip="dio-pie" />
-  if (id === 'produce') {
-    return (
-      <>
-        <Pear x={92} y={300} r={-18} s={0.95} anim={a} d={0.2} />
-        <Pear x={500} y={420} r={22} s={0.85} anim={a} d={1.1} />
-        <Clementine x={470} y={150} r={40} anim={a} d={0.5} />
-        <Clementine x={540} y={232} r={30} anim={a} d={1.4} />
-        <Clementine x={140} y={505} r={34} anim={a} d={0.9} />
-        <Berries x={200} y={60} anim={a} d={0.3} />
-        <Berries x={360} y={520} anim={a} d={1.2} />
-      </>
-    )
-  }
-  return (
-    <>
-      <Rosemary x={40} y={120} r={-24} len={170} anim={a} d={0.4} />
-      <Rosemary x={430} y={520} r={-38} len={150} anim={a} d={1.6} />
-      <BirchLeaf x={520} y={110} r={30} s={1.3} anim={a} d={0.1} />
-      <BirchLeaf x={70} y={470} r={-20} s={1.1} anim={a} d={1.3} />
-      <BirchLeaf x={560} y={330} r={70} s={0.9} anim={a} d={2.1} />
-    </>
-  )
-}
-
-// CSS 3D diorama. Pointer tilt only for a fine pointer with motion allowed;
-// everything is written to CSS variables, so React never re-renders on move.
 // The build tour: a loop through stack, pull apart and each layer alone.
 const TOUR = [
   { split: false, solo: null, ms: 2600 },
