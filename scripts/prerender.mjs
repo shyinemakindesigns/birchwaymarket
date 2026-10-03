@@ -8,7 +8,8 @@ import { fileURLToPath, pathToFileURL } from 'node:url'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const dist = resolve(root, 'dist')
-const { render } = await import(pathToFileURL(resolve(root, 'dist-ssr/entry-server.js')).href)
+const { render, preloadAll } = await import(pathToFileURL(resolve(root, 'dist-ssr/entry-server.js')).href)
+await preloadAll()
 const { PAGES, pageTitle } = await import(pathToFileURL(resolve(root, 'src/data/pages.js')).href)
 const { THEMES } = await import(pathToFileURL(resolve(root, 'src/data/sitePalette.js')).href)
 const { BRAND } = await import(pathToFileURL(resolve(root, 'src/data/brand.js')).href)

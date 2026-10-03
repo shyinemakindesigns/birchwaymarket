@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot, hydrateRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
-import App from './App.jsx'
+import App, { ROUTE_PAGES, preloadAll } from './App.jsx'
 import './styles/fonts.css'
 import './styles/tokens.css'
 import './styles/global.css'
@@ -19,9 +19,14 @@ const app = (
 
 // Hydrate only when the prerendered markup is for this exact route; an SPA
 // fallback (unknown URL served the home page HTML) renders fresh instead.
-if (root.dataset.route && root.dataset.route === window.location.pathname) {
-  hydrateRoot(root, app)
+const page = ROUTE_PAGES[window.location.pathname]
+if (page && root.dataset.route === window.location.pathname) {
+  page.preload().then(() => hydrateRoot(root, app))
 } else {
   root.textContent = ''
   createRoot(root).render(app)
 }
+
+// Fetch the other chapters once the browser is idle, so later navigation is instant.
+const idle = window.requestIdleCallback || ((fn) => setTimeout(fn, 1500))
+window.addEventListener('load', () => idle(() => { preloadAll() }), { once: true })
