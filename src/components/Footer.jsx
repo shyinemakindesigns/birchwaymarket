@@ -85,7 +85,7 @@ export default function Footer() {
             <div><dt>Job</dt><dd>BWM-200, Holiday 2026 adaptation package</dd></div>
             <div><dt>Output</dt><dd>1 master, 8 static sizes, 1 HTML5 banner</dd></div>
             <div><dt>Typefaces</dt><dd>Young Serif and Archivo</dd></div>
-            <div><dt>Built with</dt><dd>React and Vite. Claude Design and Claude Code, credited on <Link to="/reflection">How this was built</Link></dd></div>
+            <div><dt>Built with</dt><dd>React and Vite. Canva, Claude Design, Illustrator, Figma and Claude Code, credited on <Link to="/reflection">How this was built</Link></dd></div>
             <div><dt>Accessibility</dt><dd>WCAG 2.1 AA in light and dark themes. Lowest text contrast on the site: {lowestText.toFixed(2)}:1, computed on load</dd></div>
           </dl>
         </section>

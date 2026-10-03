@@ -308,7 +308,10 @@ details[open] > summary .tr-caret { transform: rotate(90deg); }
 .tools { margin: 0; display: grid; gap: 16px; }
 .tools dt { font-weight: 700; }
 .tools dd { margin: 4px 0 0; font-size: var(--t-sm); }
-.audit .table-wrap { margin-top: 20px; }
+.audit .table-wrap, .role-map .table-wrap { margin-top: 20px; }
+.role-map { margin-top: 72px; }
+.role-map td:first-child { min-width: 12rem; }
+.role-map td strong { font-weight: 600; }
 .refl-disclaimer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--rule); font-size: var(--t-sm); color: var(--muted); }
 /* Reflection uses the narrow measure for prose but needs room for the side column. */
 .page:has(.refl) { max-width: calc(1100px + var(--gutter) * 2); }
