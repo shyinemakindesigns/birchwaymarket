@@ -1,5 +1,7 @@
 # Birchway Market: Home for the Holidays, a production case study
 
+Live: https://birchway-casestudy.netlify.app
+
 A self-directed portfolio case study for a creative production specialist role. One master holiday creative for **Birchway Market** (a fictional grocery brand) adapted to eight IAB, social and DOOH specs, with a working QA checklist, an asset management system, a workload board, a process flow and an honest reflection.
 
 React 19 + React Router 7 + Vite 8, same stack as the Beacon Path build. No UI library.
