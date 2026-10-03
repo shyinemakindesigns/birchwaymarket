@@ -338,6 +338,7 @@ export default function DesignSystem() {
               <li><StatusBadge status="pass" /><span><strong>Contrast.</strong> Every text pair is at least 4.5:1 in both themes (lowest {lowest.toFixed(2)}:1). <code>npm run audit:contrast</code> fails the build otherwise.</span></li>
               <li><StatusBadge status="pass" /><span><strong>Focus.</strong> A 3 px spec-ink ring with a 3 px offset on light surfaces, Wheat on dark ones. Never removed.</span></li>
               <li><StatusBadge status="pass" /><span><strong>Touch targets.</strong> Interactive controls are at least 44 px tall.</span></li>
+              <li><StatusBadge status="pass" /><span><strong>Appearance.</strong> The header button and Alt+Shift+L (⌥⇧L on Mac) cycle System, Light and Dark; System follows the device live. The tooltip shows on hover and keyboard focus, and each change is announced.</span></li>
               <li><StatusBadge status="pass" /><span><strong>Meaning.</strong> Status, priority and urgency always pair an icon and a word with their colour.</span></li>
               <li><StatusBadge status="pass" /><span><strong>Motion.</strong> With reduced motion on, slides become fades and the banner shows its end frame.</span></li>
               <li><StatusBadge status="pass" /><span><strong>Structure.</strong> One h1 per page, a skip link, labelled landmarks, alt text on every creative, and focus moved to the new heading on navigation.</span></li>

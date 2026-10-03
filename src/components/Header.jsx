@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { PAGES } from '../data/pages.js'
 import ThemeSwitch from './ThemeSwitch.jsx'
+import ThemeButton from './ThemeButton.jsx'
 import { I } from './icons.jsx'
 
 // Burger-only navigation at every breakpoint, named entries only.
@@ -72,6 +73,8 @@ export default function Header() {
             <span className="hd-sub">Holiday production case study</span>
           </span>
         </Link>
+        <div className="hd-actions">
+        <ThemeButton />
         <button
           ref={btnRef}
           type="button"
@@ -83,6 +86,7 @@ export default function Header() {
           <span className="burger" aria-hidden="true"><i /><i /></span>
           Menu
         </button>
+        </div>
       </div>
 
       {mounted && createPortal(
