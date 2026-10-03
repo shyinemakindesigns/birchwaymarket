@@ -602,7 +602,7 @@ details[open] > summary .tr-caret { transform: rotate(90deg); }
 .pmap-us { background: var(--ink); color: var(--paper); border-color: var(--ink); }
 .pmap figcaption { font-size: var(--t-sm); color: var(--muted); }
 
-.pos-statement { margin: 0; padding: 4px 0 4px 20px; border-left: 3px solid var(--accent); max-width: 64ch; }
+.pos-statement { margin: 0; padding: 20px 0 0; border-top: 2px solid var(--ink); max-width: 64ch; }
 .pos-statement p { font-family: var(--serif); font-size: var(--t-lg); line-height: 1.45; }
 .pillars { list-style: none; margin: 28px 0 0; padding: 0; display: grid; gap: 0 28px; grid-template-columns: minmax(0, 1fr); border-top: 1px solid var(--rule); }
 @media (min-width: 760px) { .pillars { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
@@ -636,7 +636,7 @@ details[open] > summary .tr-caret { transform: rotate(90deg); }
 .post-grid { list-style: none; margin: 0; padding: 0; display: grid; gap: 20px; grid-template-columns: minmax(0, 1fr); }
 @media (min-width: 1000px) { .post-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .post-asset { font-size: var(--t-sm); }
-.post-body { padding: 14px 16px; background: var(--paper); border-left: 3px solid var(--rule); display: flex; flex-direction: column; gap: 10px; }
+.post-body { padding: 14px 16px; background: var(--paper); border: 1px solid var(--rule); border-radius: var(--r-sm); display: flex; flex-direction: column; gap: 10px; }
 .post-tags { color: var(--spec); font-weight: 600; font-size: var(--t-sm); overflow-wrap: anywhere; }
 .post-script { margin: 0; padding-left: 20px; font-size: var(--t-sm); display: grid; gap: 4px; }
 .copy-inline { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: auto; }
@@ -674,5 +674,12 @@ details[open] > summary .tr-caret { transform: rotate(90deg); }
 
 .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; }
 .hero-ctas .btn-quiet { min-height: 48px; font-size: var(--t-md); }
-.kit-motion-bar { margin: -12px 0 20px; }
-.kit-grid.is-paused .kit-art, .kit-grid.is-paused .kit-art * { animation-play-state: paused !important; }
+
+.kit-motion { margin-top: 28px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; padding: 14px 16px; border: 1px solid var(--rule); border-radius: var(--r-md); background: var(--surface); }
+.kit-motion p { font-size: var(--t-sm); color: var(--muted); flex: 1 1 18rem; }
+.kit.is-paused *, .kit.is-paused *::before { animation-play-state: paused !important; }
+.dio-btns { display: flex; flex-wrap: wrap; gap: 8px; }
+@media (prefers-reduced-motion: no-preference) {
+  .pat-drift { animation: patDrift 14s linear infinite; }
+}
+@keyframes patDrift { to { transform: translate(var(--tw), var(--th)); } }

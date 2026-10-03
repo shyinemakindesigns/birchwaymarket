@@ -5,43 +5,58 @@
 // className="hl" marks highlights and texture, dropped in the line colourways.
 export const PIE_C = { crust: '#C98A3D', crustLight: '#DDA552', filling: '#8E1F30', plate: '#E7DCC2', plateRim: '#F6F0E1' }
 
-export function Pear({ x, y, r = 0, s = 1 }) {
+
+// Optional motion wrapper: with `anim`, the element's artwork sits in a
+// classed group that the scene stylesheet (kitMotion.js) animates around the
+// element's own origin. Without it nothing is added, so TableArt is unchanged.
+function Wrap({ a, d, children }) {
+  if (!a) return children
+  return <g className={`ka ka-${a}`} style={d ? { animationDelay: `${d}s` } : undefined}>{children}</g>
+}
+
+export function Pear({ x, y, r = 0, s = 1, anim, d }) {
   return (
     <g transform={`translate(${x} ${y}) rotate(${r}) scale(${s})`}>
+      <Wrap a={anim && 'pear'} d={d}>
       <path d="M0-62c13 0 17 19 19 35 21 17 27 52 11 75-14 19-46 19-60 0-16-23-10-58 11-75 2-16 6-35 19-35z" fill="#D8B24A" />
       <path className="hl" d="M-6-40c-6 14-6 24-14 34" stroke="#F0D27A" strokeWidth="6" strokeLinecap="round" fill="none" opacity=".7" />
       <path d="M0-62c0-10 2-17 6-22" stroke="#5B3A1E" strokeWidth="5" strokeLinecap="round" fill="none" />
       <path d="M5-78c12-10 26-8 32-2-10 8-22 9-32 2z" fill="#6E8F5E" />
+      </Wrap>
     </g>
   )
 }
 
-export function Clementine({ x, y, r = 34 }) {
+export function Clementine({ x, y, r = 34, anim, d }) {
   return (
     <g transform={`translate(${x} ${y})`}>
+      <Wrap a={anim && 'clementine'} d={d}>
       <circle r={r} fill="#E07B2A" />
       <circle className="hl" r={r} fill="none" stroke="#C4621B" strokeWidth="2" strokeDasharray="1 6" opacity=".6" />
       <circle className="hl" cx={-r * 0.35} cy={-r * 0.35} r={r * 0.22} fill="#F2A15A" opacity=".8" />
       <path d={`M${r * 0.1} ${-r * 0.95}c10-14 28-14 36-8-10 12-26 14-36 8z`} fill="#4E7A4F" />
+      </Wrap>
     </g>
   )
 }
 
-export function Berries({ x, y }) {
+export function Berries({ x, y, anim, d }) {
   const pts = [[0, 0], [18, 6], [8, 20], [-14, 14], [26, 26], [-4, 36], [34, 4]]
   return (
     <g transform={`translate(${x} ${y})`}>
+      <Wrap a={anim && 'berries'} d={d}>
       {pts.map(([bx, by], i) => (
-        <g key={i}>
+        <g key={i} style={anim ? { animationDelay: `${(d || 0) + i * 0.14}s` } : undefined}>
           <circle cx={bx} cy={by} r="10" fill="#9B2335" />
           <circle className="hl" cx={bx - 3} cy={by - 3} r="2.6" fill="#D96C7A" />
         </g>
       ))}
+      </Wrap>
     </g>
   )
 }
 
-export function Rosemary({ x, y, r = 0, len = 150 }) {
+export function Rosemary({ x, y, r = 0, len = 150, anim, d }) {
   const leaves = []
   for (let i = 10; i < len; i += 13) {
     leaves.push(<ellipse key={`a${i}`} cx={i} cy={-7} rx="9" ry="3" transform={`rotate(-28 ${i} -7)`} fill="#6E8F5E" />)
@@ -49,29 +64,33 @@ export function Rosemary({ x, y, r = 0, len = 150 }) {
   }
   return (
     <g transform={`translate(${x} ${y}) rotate(${r})`}>
+      <Wrap a={anim && 'rosemary'} d={d}>
       <path d={`M0 0 L${len} 0`} stroke="#4A5E3C" strokeWidth="3" strokeLinecap="round" />
       {leaves}
+      </Wrap>
     </g>
   )
 }
 
-export function BirchLeaf({ x, y, r = 0, s = 1 }) {
+export function BirchLeaf({ x, y, r = 0, s = 1, anim, d }) {
   return (
     <g transform={`translate(${x} ${y}) rotate(${r}) scale(${s})`}>
+      <Wrap a={anim && 'leaf'} d={d}>
       <path d="M0-30c14 10 18 24 12 36-4 8-8 11-12 12-4-1-8-4-12-12-6-12-2-26 12-36z" fill="none" stroke="#D8B24A" strokeWidth="3" />
       <path d="M0-24V22" stroke="#D8B24A" strokeWidth="2.4" strokeLinecap="round" />
+      </Wrap>
     </g>
   )
 }
 
-export function Pie({ cx = 0, cy = 0, clip }) {
+export function Pie({ cx = 0, cy = 0, clip, anim }) {
   const crimp = Array.from({ length: 30 }, (_, i) => {
     const a = (i / 30) * Math.PI * 2
     return <circle key={i} cx={cx + Math.cos(a) * 140} cy={cy + Math.sin(a) * 140} r="14" fill={PIE_C.crust} />
   })
   const strips = [-90, -45, 0, 45, 90]
   return (
-    <g>
+    <g className={anim ? 'ka ka-pie' : undefined} style={anim ? { transformOrigin: `${cx}px ${cy}px` } : undefined}>
       <defs>
         <clipPath id={clip}><circle cx={cx} cy={cy} r="128" /></clipPath>
       </defs>
