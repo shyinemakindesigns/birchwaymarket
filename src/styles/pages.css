@@ -238,7 +238,6 @@ details[open] > summary .tr-caret { transform: rotate(90deg); }
 
 /* ---------- Board ---------- */
 .board-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; }
-.filters { display: flex; flex-wrap: wrap; gap: 8px; }
 .board-meta { font-size: var(--t-sm); color: var(--muted); }
 .board { display: grid; gap: 16px; grid-template-columns: minmax(0, 1fr); margin-top: 24px !important; }
 @media (min-width: 700px) { .board { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
@@ -384,8 +383,9 @@ details[open] > summary .tr-caret { transform: rotate(90deg); }
 .ds-on-spruce figcaption { color: #E9D9A6; }
 .ds-on-cream { background: #F6F0E1; box-shadow: inset 0 0 0 1px rgba(var(--shadow-ink), .15); }
 .ds-on-cream figcaption { color: #4A554E; }
-.ds-on-paper { background: var(--surface); box-shadow: inset 0 0 0 1px var(--rule); }
-.ds-on-paper figcaption { color: var(--muted); }
+/* logo tiles are artwork: fixed brand colours in both themes */
+.ds-on-paper { background: #FFFFFF; box-shadow: inset 0 0 0 1px #C5CCC2; }
+.ds-on-paper figcaption { color: #4A554E; }
 .ds-clear-box { outline: 1.5px dashed #E9D9A6; outline-offset: -1px; }
 .ds-mins { display: flex; align-items: center; gap: 28px; }
 

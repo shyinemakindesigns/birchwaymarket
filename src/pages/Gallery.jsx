@@ -32,12 +32,7 @@ export default function Gallery() {
       </PageIntro>
 
       <div className="toolbar">
-        <button type="button" className="toggle" aria-pressed={safe} onClick={() => setSafe((v) => !v)}>
-          <span className="toggle-box" aria-hidden="true">
-            {safe && <svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6.5l2.5 2.5L10 3.5" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" /></svg>}
-          </span>
-          Show safe zones
-        </button>
+        <label className="check"><input type="checkbox" checked={safe} onChange={(e) => setSafe(e.target.checked)} /><span>Show safe zones</span></label>
         <p className="toolbar-note" id="safe-note">
           {safe ? 'Dashed pink lines mark the live area. Hatched bands on the Story are reserved for platform UI.' : 'Turn on to see each spec’s live area.'}
         </p>

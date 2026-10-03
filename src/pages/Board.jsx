@@ -56,9 +56,10 @@ export default function Board() {
       </PageIntro>
 
       <div className="board-bar">
-        <div className="filters" role="group" aria-label="Filter by platform">
+        <div className="segmented" role="group" aria-label="Filter by platform">
           {['All', ...PLATFORMS].map((p) => (
             <button key={p} type="button" className="chip" aria-pressed={filter === p} onClick={() => setFilter(p)}>
+              {filter === p && <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 6.5l2.5 2.5L10 3.5" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" /></svg>}
               {p}
             </button>
           ))}

@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import { LeafMark } from '../creative/Logo.jsx'
 import { PAGES } from '../data/pages.js'
 import ThemeSwitch from './ThemeSwitch.jsx'
 
@@ -54,9 +53,21 @@ export default function Header() {
     <header className="site-header">
       <div className="hd-in">
         <Link to="/" className="hd-brand">
-          <LeafMark size={30} fg="#F6F0E1" bg="#23483A" />
+          {/* Animated leaf mark: roundel scales in, leaf outline draws then
+              fills, veins draw in sequence; sways on hover. Pure CSS, so it
+              plays from the prerendered HTML before JavaScript loads. */}
+          <svg className="lm" width="34" height="34" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+            <circle className="lm-ring" cx="32" cy="32" r="32" />
+            <g className="lm-leafgrp">
+              <path className="lm-leaf" pathLength="1" d="M32 11c10.5 8 14.5 17.5 12.4 26.6C42.7 45 37.6 49.6 32 51c-5.6-1.4-10.7-6-12.4-13.4C17.5 28.5 21.5 19 32 11z" />
+              <path className="lm-vein lm-v0" pathLength="1" d="M32 17v38" />
+              <path className="lm-vein lm-v1" pathLength="1" d="M25.5 29.5h4.5" />
+              <path className="lm-vein lm-v2" pathLength="1" d="M34 35.5h5.5" />
+              <path className="lm-vein lm-v3" pathLength="1" d="M25 42h5" />
+            </g>
+          </svg>
           <span className="hd-brand-text">
-            <span className="hd-name">Birchway Market</span>
+            <span className="hd-name"><span className="lm-word">Birchway Market</span></span>
             <span className="hd-sub">Holiday production case study</span>
           </span>
         </Link>
@@ -68,7 +79,7 @@ export default function Header() {
           aria-controls="site-menu"
           onClick={() => setOpen(true)}
         >
-          <span className="burger" aria-hidden="true"><i /><i /><i /></span>
+          <span className="burger" aria-hidden="true"><i /><i /></span>
           Menu
         </button>
       </div>

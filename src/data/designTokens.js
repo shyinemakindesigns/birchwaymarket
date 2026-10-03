@@ -30,9 +30,8 @@ export const RHYTHM = [
 ]
 
 export const RADII = [
-  { token: '--r-sm', value: '4px', use: 'Inputs, swatches, small surfaces' },
+  { token: '--r-sm', value: '4px', use: 'Every control: buttons, filters, inputs, badges' },
   { token: '--r-md', value: '8px', use: 'Cards, panels, tables' },
-  { token: '--r-pill', value: '999px', use: 'Buttons, chips, badges' },
 ]
 
 export const ELEVATION = [
@@ -44,7 +43,8 @@ export const MOTION = [
   { name: 'Sheet', value: '260 ms, cubic-bezier(.2, .7, .2, 1)', use: 'Menu panel slide-in. Reduced motion: 150 ms fade.' },
   { name: 'Stagger', value: '300 ms + 28 ms per item', use: 'Menu links settling in. Reduced motion: none.' },
   { name: 'Settle', value: '180–350 ms, cubic-bezier(.16, 1, .3, 1)', use: 'Folder chevrons, sign-off meter.' },
-  { name: 'Draw', value: '1.1 s, cubic-bezier(.16, 1, .3, 1)', use: 'The one authored moment: home dimension lines drawing out.' },
+  { name: 'Logo reveal', value: '1.3 s, staged', use: 'Header leaf mark on page load: roundel, outline draw, fill, veins, wordmark unmask. Sways on hover.' },
+  { name: 'Draw', value: '1.1 s, cubic-bezier(.16, 1, .3, 1)', use: 'Home dimension lines drawing out, after the logo reveal.' },
 ]
 
 export const BREAKPOINTS = [

@@ -265,7 +265,7 @@ export default function DesignSystem() {
 
           <Block id="ds-components" title="Components" lede="The working components from across the case study. Try them with a keyboard: every one is reachable with Tab and shows the focus ring.">
             <div className="ds-demos">
-              <Demo title="Buttons" use="Primary for the one main action on a view. Quiet for secondary actions. Labels name the action and never wrap." states="Hover darkens or fills; pressed nudges 1 px; disabled turns dashed and muted; focus shows the spec-ink ring.">
+              <Demo title="Buttons" use="Primary for the one main action on a view. Quiet for secondary actions. Labels name the action and never wrap. Corners are 4 px, like every control." states="Hover darkens or fills; pressed nudges 1 px; disabled turns dashed and muted; focus shows the spec-ink ring.">
                 <div className="ds-row">
                   <button type="button" className="btn btn-primary">View the production process</button>
                   <button type="button" className="btn btn-quiet">Clear all sign-offs</button>
@@ -273,15 +273,12 @@ export default function DesignSystem() {
                 </div>
               </Demo>
 
-              <Demo title="Filter chips and toggle" use="Chips filter a view and show the active filter; the toggle switches an overlay on or off." states="aria-pressed carries the state; the pressed chip inverts and gains a dot, so it never relies on colour alone.">
-                <div className="ds-row" role="group" aria-label="Example platform filter">
-                  {platforms.map((p) => <button key={p} type="button" className="chip" aria-pressed={chip === p} onClick={() => setChip(p)}>{p}</button>)}
-                </div>
+              <Demo title="Segmented filter and checkbox" use="The segmented filter narrows a view to one option; a checkbox switches an overlay on or off." states="aria-pressed carries the filter state; the active option inverts and shows a check mark, so it never relies on colour alone. The checkbox is a native input.">
+                <div><div className="segmented" role="group" aria-label="Example platform filter">
+                  {platforms.map((p) => <button key={p} type="button" className="chip" aria-pressed={chip === p} onClick={() => setChip(p)}>{chip === p && <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 6.5l2.5 2.5L10 3.5" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" /></svg>}{p}</button>)}
+                </div></div>
                 <div className="ds-row">
-                  <button type="button" className="toggle" aria-pressed={toggled} onClick={() => setToggled((v) => !v)}>
-                    <span className="toggle-box" aria-hidden="true">{toggled && <svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6.5l2.5 2.5L10 3.5" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" /></svg>}</span>
-                    Show safe zones
-                  </button>
+                  <label className="check"><input type="checkbox" checked={toggled} onChange={(e) => setToggled(e.target.checked)} /><span>Show safe zones</span></label>
                 </div>
               </Demo>
 
@@ -328,8 +325,8 @@ export default function DesignSystem() {
                 <p className="ds-filename"><FileName name="BirchwayMarket_Holiday2026_Animated_300x250_v1_Backup.jpg" /></p>
               </Demo>
 
-              <Demo title="Spec frame" use="Shows a creative at its true pixel size with spec-ink dimension lines, scaled to fit and never upscaled. The site’s signature component." states="Safe zone overlay on demand; the scale note updates as the frame resizes.">
-                <div className="ds-row"><button type="button" className="toggle" aria-pressed={safe} onClick={() => setSafe((v) => !v)}><span className="toggle-box" aria-hidden="true">{safe && <svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6.5l2.5 2.5L10 3.5" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" /></svg>}</span>Show safe zone</button></div>
+              <Demo title="Spec frame" use="Shows a creative at its true pixel size with spec-ink dimension lines, scaled to fit and never upscaled. Used for every creative on the site." states="Safe zone overlay on demand; the scale note updates as the frame resizes.">
+                <div className="ds-row"><label className="check"><input type="checkbox" checked={safe} onChange={(e) => setSafe(e.target.checked)} /><span>Show safe zone</span></label></div>
                 <div className="ds-spec"><SpecFrame id="r300x250" showSafe={safe} maxH={250} /></div>
               </Demo>
             </div>

@@ -93,12 +93,7 @@ export default function BrandB() {
           <p>The four formats from the file. The arches held empty photo slots, so they carry direction A’s table illustration until licensed photography is supplied.</p>
         </div>
         <div className="toolbar bb-toolbar">
-          <button type="button" className="toggle" aria-pressed={safe} onClick={() => setSafe((v) => !v)}>
-            <span className="toggle-box" aria-hidden="true">
-              {safe && <svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6.5l2.5 2.5L10 3.5" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" /></svg>}
-            </span>
-            Show safe zones
-          </button>
+          <label className="check"><input type="checkbox" checked={safe} onChange={(e) => setSafe(e.target.checked)} /><span>Show safe zones</span></label>
         </div>
         <div className="g-grid bb-set">
           {['master', 'story', 'square', 'leaderboard'].map((k) => {
