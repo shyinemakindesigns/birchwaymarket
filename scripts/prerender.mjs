@@ -13,6 +13,8 @@ const { PAGES, pageTitle } = await import(pathToFileURL(resolve(root, 'src/data/
 const { THEMES } = await import(pathToFileURL(resolve(root, 'src/data/sitePalette.js')).href)
 const { BRAND } = await import(pathToFileURL(resolve(root, 'src/data/brand.js')).href)
 const T = await import(pathToFileURL(resolve(root, 'src/data/designTokens.js')).href)
+const { FAQ } = await import(pathToFileURL(resolve(root, 'src/data/overview.js')).href)
+const { CREDIT } = await import(pathToFileURL(resolve(root, 'src/data/credit.js')).href)
 
 // Netlify sets URL to the site's primary address during builds; link
 // previews need absolute image URLs, so use it when it is there.
@@ -26,8 +28,35 @@ const shellTemplate = readFileSync(resolve(dist, 'index.html'), 'utf8')
 const template = shellTemplate
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;')
 
-// Untouched shell for unknown URLs (Netlify SPA fallback renders the 404 client-side).
-writeFileSync(resolve(dist, 'shell.html'), shellTemplate)
+// Shell for unknown URLs: served with a real 404 status (see _redirects) and
+// kept out of the index, so missing pages are not reported as soft 404s.
+writeFileSync(resolve(dist, 'shell.html'), shellTemplate.replace('<meta name="robots" content="index, follow, max-image-preview:large" />', '<meta name="robots" content="noindex" />'))
+
+const abs = (path) => `${SITE_URL}${path}`
+const BUILT = new Date().toISOString().slice(0, 10)
+const KEYWORDS = 'creative production, production designer portfolio, ad adaptation, IAB display banners, HTML5 banner, creative QA, digital asset management, copywriting, marketing strategy, SEO, AEO, GEO, design system'
+const author = CREDIT.name ? { '@type': 'Person', name: CREDIT.name, ...(CREDIT.portfolioUrl ? { url: CREDIT.portfolioUrl } : {}), ...(CREDIT.linkedinUrl ? { sameAs: [CREDIT.linkedinUrl] } : {}) } : null
+
+// Structured data for one page: the site, the case study it belongs to,
+// the page itself with its breadcrumb, and FAQPage on the overview.
+function jsonLd(page, title) {
+  const site = { '@type': 'WebSite', '@id': `${abs('/')}#site`, name: 'Birchway Market creative production case study', url: abs('/'), inLanguage: 'en-CA', description: PAGES[0].description }
+  const work = {
+    '@type': 'CreativeWork', '@id': `${abs('/')}#case-study`, name: 'Birchway Market: Home for the Holidays, a creative production case study',
+    description: PAGES[0].description, url: abs('/'), image: abs('/og-image.png'), inLanguage: 'en-CA', genre: 'Portfolio case study',
+    keywords: KEYWORDS, isPartOf: { '@id': `${abs('/')}#site` }, ...(author ? { author, creator: author } : {}),
+    about: ['Creative production', 'Multi-platform ad adaptation', 'Creative quality assurance', 'Digital asset management', 'Copywriting', 'Marketing strategy', 'Search engine optimisation'],
+    hasPart: PAGES.slice(1).map((p) => ({ '@type': 'WebPage', name: p.title, url: abs(p.path) })),
+  }
+  const webpage = {
+    '@type': page.path === '/overview' ? ['WebPage', 'FAQPage'] : 'WebPage', '@id': `${abs(page.path)}#page`, url: abs(page.path), name: title, description: page.description,
+    inLanguage: 'en-CA', isPartOf: { '@id': `${abs('/')}#site` }, about: { '@id': `${abs('/')}#case-study` }, primaryImageOfPage: abs('/og-image.png'), dateModified: BUILT,
+    ...(page.path === '/overview' ? { mainEntity: FAQ.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) } : {}),
+  }
+  const crumbs = { '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: abs('/') }, ...(page.path === '/' ? [] : [{ '@type': 'ListItem', position: 2, name: page.label, item: abs(page.path) }])] }
+  const graph = { '@context': 'https://schema.org', '@graph': [site, work, webpage, crumbs] }
+  return JSON.stringify(graph).replace(/</g, '\\u003c')
+}
 
 for (const page of PAGES) {
   const title = pageTitle(page)
@@ -39,6 +68,9 @@ for (const page of PAGES) {
     .replace(/(<meta property="og:description" content=")[^"]*(")/, `$1${esc(page.description)}$2`)
     .replace(/(<meta property="og:image" content=")[^"]*(")/, `$1${SITE_URL}/og-image.png$2`)
     .replace('<meta name="twitter:card"', `${SITE_URL ? `<meta property="og:url" content="${SITE_URL}${page.path === '/' ? '/' : page.path}" />\n    ` : ''}<meta name="twitter:card"`)
+    .replace(/(<meta name="twitter:title" content=")[^"]*(")/, `$1${esc(title)}$2`)
+    .replace(/(<meta name="twitter:description" content=")[^"]*(")/, `$1${esc(page.description)}$2`)
+    .replace('</head>', `${SITE_URL ? `  <link rel="canonical" href="${abs(page.path)}" />\n  ` : ''}  <script type="application/ld+json">${jsonLd(page, title)}</script>\n  </head>`)
     .replace('<div id="root"></div>', `<div id="root" data-route="${page.path}">${html}</div>`)
   // flat files (/brief -> brief.html): served at the clean URL by Netlify and by `vite preview`
   const file = page.path === '/' ? resolve(dist, 'index.html') : resolve(dist, `${page.path.slice(1)}.html`)
@@ -46,7 +78,34 @@ for (const page of PAGES) {
   console.log(`prerendered ${page.path.padEnd(12)} ${(out.length / 1024).toFixed(1)} KB`)
 }
 
-writeFileSync(resolve(dist, '_redirects'), '/*    /shell.html   200\n')
+writeFileSync(resolve(dist, '_redirects'), '/*    /shell.html   404\n')
+
+// Crawl files. Absolute URLs need the deployed address (Netlify sets URL).
+writeFileSync(resolve(dist, 'robots.txt'), `User-agent: *\nAllow: /\n${SITE_URL ? `\nSitemap: ${abs('/sitemap.xml')}\n` : ''}`)
+if (SITE_URL) {
+  const urls = PAGES.map((p) => `  <url><loc>${abs(p.path)}</loc><lastmod>${BUILT}</lastmod></url>`).join('\n')
+  writeFileSync(resolve(dist, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`)
+  console.log('wrote sitemap.xml')
+} else {
+  console.log('URL not set: skipped sitemap.xml (Netlify sets it on deploy)')
+}
+// llms.txt: a plain summary for AI assistants (proposed convention, llmstxt.org).
+const llms = `# Birchway Market: creative production case study
+
+> ${PAGES[0].description}
+
+Birchway Market is a fictional brand created for a self-directed portfolio project. No real retailer's branding is used. Measured values on the site are limited to what each page checks itself (dimensions, contrast, file weights, character counts); market research, competitor analysis and the traffic forecast are labelled as plans, archetypes and placeholder assumptions.
+
+## Chapters
+
+${PAGES.slice(1).map((p) => `- [${p.title}](${abs(p.path)}): ${p.description}`).join('\n')}
+
+## Questions
+
+${FAQ.map((f) => `- ${f.q} ${f.a}`).join('\n')}
+`
+writeFileSync(resolve(dist, 'llms.txt'), llms)
+console.log('wrote robots.txt, llms.txt')
 
 // Design tokens as a DTCG-style JSON file (linked from the Design system page).
 const colorSet = (obj) => Object.fromEntries(Object.entries(obj).map(([k, v]) => [k, { $type: 'color', $value: v }]))
