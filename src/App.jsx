@@ -12,6 +12,7 @@ import Assets from './pages/Assets.jsx'
 import Board from './pages/Board.jsx'
 import Process from './pages/Process.jsx'
 import Reflection from './pages/Reflection.jsx'
+import BrandB from './pages/BrandB.jsx'
 import NotFound from './pages/NotFound.jsx'
 import ExportFrame from './pages/ExportFrame.jsx'
 
@@ -47,6 +48,7 @@ export default function App() {
           <Route path="/assets" element={<Assets />} />
           <Route path="/board" element={<Board />} />
           <Route path="/process" element={<Process />} />
+          <Route path="/brand-direction" element={<BrandB />} />
           <Route path="/reflection" element={<Reflection />} />
           {import.meta.env.DEV && <Route path="/__export" element={<ExportFrame />} />}
           <Route path="*" element={<NotFound />} />

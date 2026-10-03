@@ -9,6 +9,7 @@ export const PAGES = [
   { path: '/assets', label: 'Asset management', title: 'Asset management system', description: 'Campaign folder structure, a six-segment file naming convention and a live filename checker.' },
   { path: '/board', label: 'Workload board', title: 'Workload board', description: 'A Kanban workload board tracking eight concurrent creative requests from to do through delivered.' },
   { path: '/process', label: 'Process flow', title: 'Process flow', description: 'How one creative request moves from brief to platform delivery in seven steps.' },
+  { path: '/brand-direction', label: 'Brand direction B', title: 'Brand direction B', description: 'A second Birchway identity designed in Claude Design, reviewed like an incoming brand file: Story safe zones, minimum type sizes and contrast corrected, with the guideline sheet rebuilt.' },
   { path: '/reflection', label: 'How this was built', title: 'Reflection: how this was built', description: 'What this case study was built to prove, which parts were mine, how Claude Design and Claude Code were used, and measured contrast for the whole site.' },
 ]
 

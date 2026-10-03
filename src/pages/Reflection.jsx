@@ -14,7 +14,7 @@ const NEXT_TIME = [
 const TOOLS = [
   {
     k: 'Claude Design',
-    d: 'Concept generation. Early directions for the Birchway brand and the master key visual, which I chose between and refined. The holiday table idea, the spruce and cranberry palette, and the rule that Pear Gold stays out of text and CTA fills were creative-direction calls I made from those options.',
+    d: 'Concept generation. Early directions for the Birchway brand and the master key visual, which I chose between and refined. The holiday table idea, the spruce and cranberry palette, and the rule that Pear Gold stays out of text and CTA fills were creative-direction calls I made from those options. Brand direction B, the Gloock wordmark and arch system, is a Claude Design file made from my direction; I reviewed and corrected it like any incoming brand file.',
   },
   {
     k: 'Claude Code',

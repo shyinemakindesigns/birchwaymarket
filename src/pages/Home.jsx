@@ -10,6 +10,7 @@ const BLURBS = {
   '/assets': 'Folder structure, naming convention and a live filename checker.',
   '/board': 'Eight concurrent requests tracked across five stages.',
   '/process': 'How one request moves from brief to delivery in seven steps.',
+  '/brand-direction': 'A second identity from Claude Design, reviewed and corrected like an incoming brand file.',
   '/reflection': 'What was mine, what the AI tools did, and what I would change.',
 }
 

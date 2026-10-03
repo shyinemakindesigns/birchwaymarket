@@ -314,3 +314,28 @@ details[open] > summary .tr-caret { transform: rotate(90deg); }
 .page:has(.refl) { max-width: calc(1100px + var(--gutter) * 2); }
 @media (min-width: 1000px) { .refl { grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr); gap: 56px; } .refl-main { max-width: var(--measure); } }
 @media (max-width: 379px) { .anim-stage .spec-dim-y { display: none; } }
+
+/* ---------- Brand direction B ---------- */
+.bb-toolbar { margin-bottom: 28px; }
+.bb-master { flex: 1 1 100%; }
+.bb-story { flex: 0 1 380px; }
+.bb-square { flex: 1 1 420px; max-width: 554px; }
+.bb-leaderboard { flex: 1 1 100%; }
+.bb-story-pair { align-items: flex-start; }
+.bb-story-fig { flex: 0 1 300px; }
+.bb-verdict { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; font-size: var(--t-sm); color: var(--ink); }
+.bb-fixes { margin-top: 40px; }
+.bb-fixes dl div { grid-template-columns: 44px minmax(0, 1fr); }
+.bb-guide-grid { display: grid; gap: 48px 56px; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 1000px) { .bb-guide-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
+.bb-guide-block { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.bb-guide-block h3 { font-family: var(--serif); font-weight: 400; font-size: var(--t-lg); border-top: 1px solid var(--ink); padding-top: 14px; }
+.bb-dl { margin: 0; display: grid; gap: 0; }
+.bb-dl div { display: grid; grid-template-columns: minmax(0, 11rem) minmax(0, 1fr); gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--rule); font-size: var(--t-sm); }
+.bb-dl dt { font-weight: 600; }
+.bb-dl dd { margin: 0; color: var(--muted); }
+.bb-share { display: flex; height: 14px; border-radius: var(--r-sm); overflow: hidden; box-shadow: inset 0 0 0 1px rgba(var(--shadow-ink), .2); }
+.bb-note { font-size: var(--t-sm); color: var(--muted); }
+.bb-usage { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px 16px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.bb-usage p { margin-top: 8px; font-size: var(--t-sm); display: flex; align-items: flex-start; gap: 8px; }
+@media (max-width: 480px) { .bb-usage { grid-template-columns: minmax(0, 1fr); } }

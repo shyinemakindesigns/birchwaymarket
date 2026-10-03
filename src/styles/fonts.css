@@ -38,3 +38,20 @@
   descent-override: 21.31%;
   line-gap-override: 0%;
 }
+
+/* Brand direction B (Claude Design file): Gloock + Hanken Grotesk. Declared
+   here but only downloaded on the page that uses them; no preload. */
+@font-face {
+  font-family: 'Gloock';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url('/fonts/gloock-latin-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Hanken Grotesk';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url('/fonts/hanken-grotesk-latin-wght.woff2') format('woff2-variations'), url('/fonts/hanken-grotesk-latin-wght.woff2') format('woff2');
+}

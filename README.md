@@ -15,6 +15,7 @@ React 19 + React Router 7 + Vite 8, same stack as the Beacon Path build. No UI l
 | `/assets` | Naming convention diagram, live filename checker, folder tree |
 | `/board` | Kanban workload board (filter, move, WIP limit) |
 | `/process` | Seven-step process flow |
+| `/brand-direction` | Brand direction B: the Claude Design identity (Gloock wordmark, arch), reviewed and corrected, with the guideline sheet rebuilt |
 | `/reflection` | How this was built, AI disclosure, live contrast table |
 
 ## How the creatives work
@@ -29,6 +30,10 @@ The animated banner is a standalone HTML5 package at `public/html5/BirchwayMarke
 - Illustration: `src/creative/TableArt.jsx`
 - Colours, type, copy: `src/data/brand.js`
 - Specs, filenames, alt text: `src/data/specs.js`
+
+## Brand direction B
+
+`src/brandb/` holds the second identity from the Claude Design file (Gloock + Hanken Grotesk, Spruce / Birch / Cranberry / Gilt / Bark, wordmark with gilt birch-bark rules, arch frame). It renders the four formats from that file in corrected form and the Story exactly as received, measured live against the 250 px Story safe zones. It is isolated from direction A: nothing in it feeds the QA checklist. Its fonts are self-hosted and only download on that page.
 
 ## Accessibility
 
