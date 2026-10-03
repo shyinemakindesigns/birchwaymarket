@@ -5,11 +5,13 @@ import { I } from '../components/icons.jsx'
 import { Pear, Clementine, Berries, Rosemary, BirchLeaf, Pie, ELEMENTS } from '../creative/artKit.jsx'
 import { COMPOSITIONS, PATTERNS } from '../creative/kitScenes.jsx'
 import { svgMarkup, downloadText, lineCss } from '../lib/svgExport.js'
+import { KIT_MOTION } from '../creative/kitMotion.js'
 
 const TONES = [
   { id: 'full', label: 'Full colour', file: 'Colour', note: 'As drawn, for Spruce backgrounds.' },
   { id: 'line', label: 'Line', file: 'Line', note: 'Spruce outline for light backgrounds, print and one-colour use.', css: lineCss('#23483A') },
   { id: 'reverse', label: 'Reverse line', file: 'Reverse', note: 'Hearth Cream outline for Spruce backgrounds. Transparent file.', css: lineCss('#F6F0E1') },
+  { id: 'animated', label: 'Animated', file: 'Animated', note: 'Full colour with a loop for social stickers, email and web. The SVG carries its own animation and stops for reduced motion.' },
 ]
 
 // The table art as four stacked layers, back to front.
@@ -170,6 +172,7 @@ function Actions({ getSvg, title, file, css, say, what }) {
 
 export default function BrandGraphics() {
   const [tone, setTone] = useState('full')
+  const [paused, setPaused] = useState(false)
   const [msg, say] = useCopyStatus()
   const refs = useRef({})
   const t = TONES.find((x) => x.id === tone)
@@ -200,14 +203,26 @@ export default function BrandGraphics() {
             ))}
           </div>
         </div>
-        <ul className={`kit-grid kit-tone-${tone}`}>
+        {tone === 'animated' && (
+          <p className="kit-motion-bar">
+            <button type="button" className="btn btn-quiet" aria-pressed={paused} onClick={() => setPaused((v) => !v)}>
+              {paused ? <I.play /> : <I.pause />}{paused ? 'Play animations' : 'Pause animations'}
+            </button>
+          </p>
+        )}
+        <ul className={`kit-grid kit-tone-${tone}${paused ? ' is-paused' : ''}`}>
           {ELEMENTS.map((el) => {
             const file = fileName(`${pascal(el.name)}${t.file}`)
             return (
               <li key={el.id} className="kit-card">
                 <div className="kit-tile">
                   <svg ref={(n) => { refs.current[el.id] = n }} className="kit-art" viewBox={el.viewBox} aria-hidden="true" focusable="false">
-                    {el.draw(el.id)}
+                    {tone === 'animated' ? (
+                      <>
+                        <style>{KIT_MOTION[el.id]}</style>
+                        <g className={`kit-anim-${el.id}`}>{el.draw(el.id)}</g>
+                      </>
+                    ) : el.draw(el.id)}
                   </svg>
                 </div>
                 <h3>{el.name}</h3>

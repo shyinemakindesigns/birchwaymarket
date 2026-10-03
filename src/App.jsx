@@ -15,6 +15,9 @@ import Reflection from './pages/Reflection.jsx'
 import BrandB from './pages/BrandB.jsx'
 import DesignSystem from './pages/DesignSystem.jsx'
 import BrandGraphics from './pages/BrandGraphics.jsx'
+import Overview from './pages/Overview.jsx'
+import Strategy from './pages/Strategy.jsx'
+import Copy from './pages/Copy.jsx'
 import NotFound from './pages/NotFound.jsx'
 import ExportFrame from './pages/ExportFrame.jsx'
 import Thumbnail from './pages/Thumbnail.jsx'
@@ -45,6 +48,9 @@ export default function App() {
       <main id="main" tabIndex={-1}>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/overview" element={<Overview />} />
+          <Route path="/strategy" element={<Strategy />} />
+          <Route path="/copy" element={<Copy />} />
           <Route path="/brief" element={<Brief />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/qa" element={<QA />} />

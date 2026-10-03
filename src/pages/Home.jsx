@@ -4,6 +4,9 @@ import { PAGES } from '../data/pages.js'
 import FileName from '../components/FileName.jsx'
 
 const BLURBS = {
+  '/overview': 'Start here: the project in two paragraphs, skills, tools and a reading path for your role.',
+  '/strategy': 'Audience, research plan, competitor gaps, platform roles and a traffic forecast.',
+  '/copy': 'Platform copy fitted to character limits, social posts, hashtags, and SEO, AEO and GEO.',
   '/brief': 'The intake ticket: what was asked for, on which platforms, by when.',
   '/gallery': 'The master next to all eight adapted sizes, plus a playable HTML5 banner.',
   '/qa': 'A working QA checklist that measures each file, and one real before and after.',
@@ -37,7 +40,10 @@ export default function Home() {
           <p className="hero-summary">
             One approved holiday creative, adapted to eight display, social and out-of-home specs, quality-checked, filed and delivered on a six-week schedule.
           </p>
-          <Link to="/process" className="btn btn-primary">View the production process</Link>
+          <div className="hero-ctas">
+            <Link to="/overview" className="btn btn-primary">Start with the overview</Link>
+            <Link to="/process" className="btn btn-quiet">See the process</Link>
+          </div>
         </div>
         <figure className="hero-figure">
           <SpecFrame id="master" maxH={760} draw />

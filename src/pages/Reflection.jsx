@@ -87,6 +87,7 @@ export default function Reflection() {
 
           <h2>Where AI did the work</h2>
           <p>Claude Design produced concept routes and the brand direction B file. Claude Code produced the code: the adapted layouts, the HTML5 banner package, the QA measurement logic, the corrections to direction B and this site. Both worked from my direction, specs and criteria, and nothing went live without my review.</p>
+          <p>The <Link to="/strategy">strategy</Link> and <Link to="/copy">copy and search</Link> chapters were drafted with Claude Code from the brief and checked against it. Their research is a plan with the tools that would run it, not completed research, and their forecast uses placeholder rates, both labelled where they appear.</p>
         </div>
 
         <aside className="refl-side">
