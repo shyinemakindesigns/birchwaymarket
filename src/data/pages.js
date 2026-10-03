@@ -11,6 +11,7 @@ export const PAGES = [
   { path: '/process', label: 'Process flow', title: 'Process flow', description: 'How one creative request moves from brief to platform delivery in seven steps.' },
   { path: '/brand-direction', label: 'Brand direction B', title: 'Brand direction B', description: 'A second Birchway identity designed in Claude Design, reviewed like an incoming brand file: Story safe zones, minimum type sizes and contrast corrected, with the guideline sheet rebuilt.' },
   { path: '/reflection', label: 'How this was built', title: 'Reflection: how this was built', description: 'What this case study was built to prove, which parts were mine, how Claude Design and Claude Code were used, and measured contrast for the whole site.' },
+  { path: '/design-system', label: 'Design system', title: 'Design system', appendix: true, description: 'The Birchway design system: brand logo, colour and type rules, interface tokens in light and dark themes, live components, accessibility rules and downloadable tokens.' },
 ]
 
 export const pageTitle = (page) => (!page ? `Page not found | ${SITE_SUFFIX}` : page.path === '/' ? SITE_TITLE : `${page.title} | ${SITE_SUFFIX}`)

@@ -13,8 +13,10 @@ import Board from './pages/Board.jsx'
 import Process from './pages/Process.jsx'
 import Reflection from './pages/Reflection.jsx'
 import BrandB from './pages/BrandB.jsx'
+import DesignSystem from './pages/DesignSystem.jsx'
 import NotFound from './pages/NotFound.jsx'
 import ExportFrame from './pages/ExportFrame.jsx'
+import Thumbnail from './pages/Thumbnail.jsx'
 
 // On route change: reset scroll, update <title>, and move focus to the new
 // page's h1 so keyboard and screen-reader users land at the new content.
@@ -50,7 +52,9 @@ export default function App() {
           <Route path="/process" element={<Process />} />
           <Route path="/brand-direction" element={<BrandB />} />
           <Route path="/reflection" element={<Reflection />} />
+          <Route path="/design-system" element={<DesignSystem />} />
           {import.meta.env.DEV && <Route path="/__export" element={<ExportFrame />} />}
+          {import.meta.env.DEV && <Route path="/__thumb" element={<Thumbnail />} />}
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Pager />
