@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { ANIMATED } from '../data/specs.js'
 import FileName from './FileName.jsx'
+import { I } from './icons.jsx'
 
 // Embeds the real HTML5 package in an iframe and drives it over
 // postMessage. Pause / play / replay sit outside the ad so they are always
@@ -59,14 +60,14 @@ export default function AnimatedBanner() {
         <div className="anim-controls" role="group" aria-label="Banner playback">
           <button type="button" className="btn btn-quiet" onClick={() => send(paused ? 'play' : 'pause')} disabled={done || state.state === 'loading'}>
             {paused ? (
-              <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 1.5v9l7-4.5z" fill="currentColor" /></svg>
+              <I.play />
             ) : (
-              <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 1.5h2.5v9H2.5zM7 1.5h2.5v9H7z" fill="currentColor" /></svg>
+              <I.pause />
             )}
             {paused ? 'Play' : 'Pause'}
           </button>
           <button type="button" className="btn btn-quiet" onClick={() => send('replay')} disabled={state.state === 'loading' || state.state === 'reduced'}>
-            <svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true"><path d="M2.5 7a4.5 4.5 0 1 0 1.4-3.3" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" /><path d="M2 1.5v3h3" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>
+            <I.replay />
             Replay
           </button>
         </div>

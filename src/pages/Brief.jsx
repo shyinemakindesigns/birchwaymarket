@@ -2,6 +2,7 @@ import PageIntro from '../components/PageIntro.jsx'
 import FileName from '../components/FileName.jsx'
 import PriorityIcon from '../components/PriorityIcon.jsx'
 import { TICKET, BRIEF_SECTIONS, DELIVERABLES, MILESTONES, ATTACHMENTS } from '../data/brief.js'
+import { I } from '../components/icons.jsx'
 
 export default function Brief() {
   return (
@@ -15,7 +16,7 @@ export default function Brief() {
           <span className="ticket-id">{TICKET.id}</span>
           <span className="ticket-type">{TICKET.type}</span>
           <span className="status-pill status-delivered">
-            <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 6.5l2.5 2.5L10 3.5" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" /></svg>
+            <I.check size={13} />
             {TICKET.status}
           </span>
         </div>
@@ -65,7 +66,7 @@ export default function Brief() {
               <ul>
                 {ATTACHMENTS.map((a) => (
                   <li key={a}>
-                    <svg width="14" height="16" viewBox="0 0 14 16" aria-hidden="true"><path d="M2 1h7l3 3v11H2z" fill="none" stroke="currentColor" strokeWidth="1.4" /><path d="M9 1v3h3" fill="none" stroke="currentColor" strokeWidth="1.4" /></svg>
+                    <I.fileText />
                     <span><FileName name={a} /></span>
                   </li>
                 ))}

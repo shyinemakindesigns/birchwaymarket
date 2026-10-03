@@ -3,12 +3,13 @@ import PageIntro from '../components/PageIntro.jsx'
 import { ROOT, SEGMENTS, NAME_RULES } from '../data/tree.js'
 import FileName from '../components/FileName.jsx'
 import { SPECS, ANIMATED } from '../data/specs.js'
+import { I } from '../components/icons.jsx'
 
 function FolderIcon() {
-  return <svg className="ic" width="18" height="15" viewBox="0 0 18 15" aria-hidden="true"><path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h4l2 2h7A1.5 1.5 0 0 1 17 4.5v8A1.5 1.5 0 0 1 15.5 14h-13A1.5 1.5 0 0 1 1 12.5z" fill="currentColor" /></svg>
+  return <I.folder className="ic" />
 }
 function FileIcon() {
-  return <svg className="ic" width="13" height="15" viewBox="0 0 13 15" aria-hidden="true"><path d="M1.5 1h6.5l3.5 3.5v9.5h-10z" fill="none" stroke="currentColor" strokeWidth="1.4" /><path d="M8 1v3.5h3.5" fill="none" stroke="currentColor" strokeWidth="1.4" /></svg>
+  return <I.file className="ic" />
 }
 
 function Folder({ node, depth = 0 }) {
@@ -17,7 +18,7 @@ function Folder({ node, depth = 0 }) {
     <li className="tr-node">
       <details open={depth < 2 || node.name === '300x250'}>
         <summary>
-          <span className="tr-folder"><svg className="tr-caret" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M3.5 1.5 7 5 3.5 8.5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg><FolderIcon />{node.name}/</span>
+          <span className="tr-folder"><I.caret className="tr-caret" /><FolderIcon />{node.name}/</span>
           {node.note && <span className="tr-note">{node.note}</span>}
         </summary>
         {hasKids ? (
@@ -137,11 +138,7 @@ export default function Assets() {
                 <ul className="checker-list">
                   {res.results.map((r) => (
                     <li key={r.seg.name} className={r.ok ? 'ok' : 'bad'}>
-                      <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
-                        {r.ok
-                          ? <path d="M2.5 7.5l3 3L11.5 4" stroke="currentColor" strokeWidth="2.2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-                          : <path d="M3.5 3.5l7 7M10.5 3.5l-7 7" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />}
-                      </svg>
+                      {r.ok ? <I.check /> : <I.x />}
                       <span><strong>{r.seg.name}:</strong> {r.val ? <code>{r.val}</code> : 'missing'}{r.ok ? ', correct' : `. ${r.why}`}</span>
                     </li>
                   ))}

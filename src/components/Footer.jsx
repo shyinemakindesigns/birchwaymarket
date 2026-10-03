@@ -5,6 +5,7 @@ import { SITE_PAIRS, THEMES } from '../data/sitePalette.js'
 import { CREDIT } from '../data/credit.js'
 import { contrastRatio } from '../lib/contrast.js'
 import { LeafMark } from '../creative/Logo.jsx'
+import { I } from './icons.jsx'
 
 // The footer is the proof sheet's colophon and slug line: a closing line,
 // the chapter list (where you are in the sequence), the production facts,
@@ -57,7 +58,7 @@ export default function Footer() {
             </p>
           )}
           <button type="button" className="ft-top" onClick={backToTop}>
-            <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M7 12V2.5M2.5 6.5 7 2l4.5 4.5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>
+            <I.arrowUp />
             Back to top
           </button>
         </section>

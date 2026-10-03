@@ -10,6 +10,7 @@ import { BrandBoard, ClearspaceBoard, UsageTile } from '../brandb/Boards.jsx'
 import { BRAND_B, CB } from '../brandb/brandB.js'
 import { marketSize } from '../brandb/LogoB.jsx'
 import { contrastRatio } from '../lib/contrast.js'
+import { I } from '../components/icons.jsx'
 
 const STORY_SAFE = FORMATS.story.safe
 
@@ -122,17 +123,17 @@ export default function BrandB() {
 
         <div className="ba-pair bb-story-pair">
           <figure className="ba-fig bb-story-fig" ref={rxRef}>
-            <p className="ba-tag ba-tag-before"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3.5 3.5l7 7M10.5 3.5l-7 7" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" /></svg>As received</p>
+            <p className="ba-tag ba-tag-before"><I.x />As received</p>
             <SpecFrame w={1080} h={1920} maxH={460} alt="The Story as positioned in the Claude Design file, with safe zones shown: the wordmark sits inside the hatched top band and the button and legal line run into the hatched bottom band.">
               <CreativeB layout={STORY_AS_RECEIVED} w={1080} h={1920} safe={STORY_SAFE} showSafe id="b-story-rx" />
             </SpecFrame>
             <figcaption className="cap"><SafeVerdict b={rx} /></figcaption>
           </figure>
           <div className="ba-arrow" aria-hidden="true">
-            <svg width="48" height="24" viewBox="0 0 48 24"><path d="M2 12h40M34 4l8 8-8 8" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+            <I.arrowRight />
           </div>
           <figure className="ba-fig bb-story-fig" ref={fxRef}>
-            <p className="ba-tag ba-tag-after"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2.5 7.5l3 3L11.5 4" stroke="currentColor" strokeWidth="2.2" fill="none" strokeLinecap="round" strokeLinejoin="round" /></svg>Corrected</p>
+            <p className="ba-tag ba-tag-after"><I.check />Corrected</p>
             <SpecFrame w={1080} h={1920} maxH={460} alt="The corrected Story with safe zones shown: wordmark, arch, headline, button and legal line all sit between the hatched bands.">
               <CreativeB layout={FORMATS.story.layout} w={1080} h={1920} safe={STORY_SAFE} showSafe id="b-story-fx" />
             </SpecFrame>
@@ -250,7 +251,7 @@ export default function BrandB() {
                     : <FitBox w={320} h={170} alt={u.t}><UsageTile kind={u.k} /></FitBox>}
                   <p>
                     <span className={`badge ${u.ok ? 'badge-pass' : 'badge-fail'}`}>
-                      <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">{u.ok ? <path d="M2.5 7.5l3 3L11.5 4" stroke="currentColor" strokeWidth="2.2" fill="none" strokeLinecap="round" strokeLinejoin="round" /> : <path d="M3.5 3.5l7 7M10.5 3.5l-7 7" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />}</svg>
+                      {u.ok ? <I.check /> : <I.x />}
                       {u.ok ? 'Do' : 'Don’t'}
                     </span>
                     {u.t.replace(/^Don’t /, '').replace(/^./, (c) => c.toUpperCase())}

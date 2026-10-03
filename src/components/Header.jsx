@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { PAGES } from '../data/pages.js'
 import ThemeSwitch from './ThemeSwitch.jsx'
+import { I } from './icons.jsx'
 
 // Burger-only navigation at every breakpoint, named entries only.
 // The sheet is a modal dialog: focus moves in on open, is trapped while
@@ -100,7 +101,7 @@ export default function Header() {
           <span className="menu-title">Case study</span>
           <button type="button" className="menu-close" onClick={() => setOpen(false)}>
             Close
-            <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 2l10 10M12 2L2 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /></svg>
+            <I.x size={16} />
           </button>
         </div>
         <nav aria-label="Main">

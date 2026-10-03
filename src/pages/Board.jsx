@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import PageIntro from '../components/PageIntro.jsx'
 import PriorityIcon from '../components/PriorityIcon.jsx'
 import { COLUMNS, PLATFORMS, PRIORITIES, TICKETS } from '../data/board.js'
+import { I, PLATFORM_ICON } from '../components/icons.jsx'
 
 // Board snapshot date, so "due in" values stay stable for every visitor.
 const AS_OF = new Date('2026-10-29T12:00:00')
@@ -18,12 +19,6 @@ function dueInfo(iso, status) {
   return { label, rel: `In ${days} days`, urgent: false }
 }
 
-const PLATFORM_ICON = {
-  Display: <rect x="1.5" y="2.5" width="11" height="8" rx="1" fill="none" stroke="currentColor" strokeWidth="1.5" />,
-  Social: <><rect x="3.5" y="1" width="7" height="12" rx="1.5" fill="none" stroke="currentColor" strokeWidth="1.5" /><path d="M6 11h2" stroke="currentColor" strokeWidth="1.5" /></>,
-  DOOH: <><rect x="1" y="1.5" width="12" height="7.5" fill="none" stroke="currentColor" strokeWidth="1.5" /><path d="M7 9v4M4.5 13h5" stroke="currentColor" strokeWidth="1.5" /></>,
-  Animated: <><circle cx="7" cy="7" r="5.5" fill="none" stroke="currentColor" strokeWidth="1.5" /><path d="M5.5 4.5v5l4-2.5z" fill="currentColor" /></>,
-}
 
 const sortTickets = (a, b) => PRIORITIES[a.priority].rank - PRIORITIES[b.priority].rank || a.due.localeCompare(b.due)
 
@@ -59,7 +54,7 @@ export default function Board() {
         <div className="segmented" role="group" aria-label="Filter by platform">
           {['All', ...PLATFORMS].map((p) => (
             <button key={p} type="button" className="chip" aria-pressed={filter === p} onClick={() => setFilter(p)}>
-              {filter === p && <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 6.5l2.5 2.5L10 3.5" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" /></svg>}
+              {filter === p && <I.check size={13} />}
               {p}
             </button>
           ))}
@@ -101,11 +96,11 @@ export default function Board() {
                       {t.note && <p className="card-note">{t.note}</p>}
                       <div className="card-meta">
                         <span className="tag">
-                          <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">{PLATFORM_ICON[t.platform]}</svg>
+                          {(() => { const P = PLATFORM_ICON[t.platform]; return <P /> })()}
                           {t.platform}
                         </span>
                         <span className={`due${due.urgent ? ' due-urgent' : ''}`}>
-                          {due.urgent && <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 1l5 9.5H1z" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" /><path d="M6 4.5v2.5M6 8.6v.1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>}
+                          {due.urgent && <I.warning />}
                           <time dateTime={t.due}>{due.label}</time>
                           <span className="due-rel">{due.rel}</span>
                         </span>

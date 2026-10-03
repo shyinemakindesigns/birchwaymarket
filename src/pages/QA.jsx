@@ -9,6 +9,7 @@ import { buildChecks } from '../lib/qaChecks.js'
 import { evaluate } from '../lib/contrast.js'
 import { C } from '../data/brand.js'
 import { LAYOUTS, DRAFT_300x250 } from '../creative/layouts.js'
+import { I } from '../components/icons.jsx'
 
 const OPTIONS = [
   { key: 'r300x250@draft', id: 'r300x250', draft: true, label: '300 × 250, v1 first draft' },
@@ -116,7 +117,7 @@ export default function QA() {
             <fieldset key={g.id} className={`qa-group${g.illustrative ? ' qa-illus' : ''}`}>
               <legend>
                 {g.title}
-                {g.illustrative && <span className="illus-tag"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><rect x="2.5" y="2.5" width="9" height="9" rx="1.5" fill="none" stroke="currentColor" strokeWidth="1.6" strokeDasharray="2.2 1.8" /></svg>Illustrative placeholder category</span>}
+                {g.illustrative && <span className="illus-tag"><I.placeholder />Illustrative placeholder category</span>}
               </legend>
               {g.illustrative && (
                 <p className="qa-illus-note">Generic placeholders showing where legal and compliance review sits in the workflow. Not real legal guidance, and no real offer or pricing copy is used.</p>
@@ -166,7 +167,7 @@ export default function QA() {
 
         <div className="ba-pair">
           <figure className="ba-fig">
-            <p className="ba-tag ba-tag-before"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3.5 3.5l7 7M10.5 3.5l-7 7" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" /></svg>Before: v1, 3 flags</p>
+            <p className="ba-tag ba-tag-before"><I.x />Before: v1, 3 flags</p>
             <SpecFrame id="r300x250" maxH={250} alt={DRAFT_ALT}>
               <div style={{ position: 'relative', width: 300, height: 250 }}>
                 <img src={V1} width="300" height="250" alt="" style={{ display: 'block' }} />
@@ -179,11 +180,11 @@ export default function QA() {
           </figure>
 
           <div className="ba-arrow" aria-hidden="true">
-            <svg width="48" height="24" viewBox="0 0 48 24"><path d="M2 12h40M34 4l8 8-8 8" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+            <I.arrowRight />
           </div>
 
           <figure className="ba-fig">
-            <p className="ba-tag ba-tag-after"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2.5 7.5l3 3L11.5 4" stroke="currentColor" strokeWidth="2.2" fill="none" strokeLinecap="round" strokeLinejoin="round" /></svg>After: v2, all fixed</p>
+            <p className="ba-tag ba-tag-after"><I.check />After: v2, all fixed</p>
             <SpecFrame id="r300x250" maxH={250} alt={FINAL_ALT}>
               <div style={{ position: 'relative', width: 300, height: 250 }}>
                 <img src={V2} width="300" height="250" alt="" style={{ display: 'block' }} />

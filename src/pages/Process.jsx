@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import PageIntro from '../components/PageIntro.jsx'
 import { STEPS } from '../data/process.js'
+import { I } from '../components/icons.jsx'
 
 export default function Process() {
   return (
@@ -20,7 +21,7 @@ export default function Process() {
         ))}
       </ol>
       <p className="flow-loop">
-        <svg width="28" height="16" viewBox="0 0 28 16" aria-hidden="true"><path d="M26 4H6a4 4 0 0 0 0 8h4" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" /><path d="M8 8l3 4-3 4" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" transform="translate(0 -4)" /></svg>
+        <I.loop />
         If a stakeholder round brings changes, the file goes back to step 3 as the next version and runs through internal QA again before anyone else sees it.
       </p>
 

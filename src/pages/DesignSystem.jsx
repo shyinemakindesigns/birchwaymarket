@@ -12,6 +12,7 @@ import { LAYOUTS } from '../creative/layouts.js'
 import { THEMES, SITE_PAIRS, need } from '../data/sitePalette.js'
 import { TYPE_SCALE, LAYOUT, RHYTHM, RADII, ELEVATION, MOTION, BREAKPOINTS, Z, PRINCIPLES } from '../data/designTokens.js'
 import { contrastRatio } from '../lib/contrast.js'
+import { I } from '../components/icons.jsx'
 
 const SECTIONS = [
   { id: 'ds-principles', label: 'Principles' },
@@ -77,7 +78,7 @@ function CopyButton({ text, label }) {
   return (
     <>
       <button type="button" className="btn btn-quiet" onClick={copy}>
-        <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><rect x="4" y="4" width="8.5" height="8.5" rx="1.5" fill="none" stroke="currentColor" strokeWidth="1.5" /><path d="M2 9.5V2.5A1 1 0 0 1 3 1.5h6.5" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>
+        <I.copy />
         {label}
       </button>
       <span className="ds-copy-status" role="status">{state === 'done' ? 'Copied to clipboard.' : state === 'error' ? 'Copy failed. Select the text and copy it manually.' : ''}</span>
@@ -275,7 +276,7 @@ export default function DesignSystem() {
 
               <Demo title="Segmented filter and checkbox" use="The segmented filter narrows a view to one option; a checkbox switches an overlay on or off." states="aria-pressed carries the filter state; the active option inverts and shows a check mark, so it never relies on colour alone. The checkbox is a native input.">
                 <div><div className="segmented" role="group" aria-label="Example platform filter">
-                  {platforms.map((p) => <button key={p} type="button" className="chip" aria-pressed={chip === p} onClick={() => setChip(p)}>{chip === p && <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 6.5l2.5 2.5L10 3.5" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" /></svg>}{p}</button>)}
+                  {platforms.map((p) => <button key={p} type="button" className="chip" aria-pressed={chip === p} onClick={() => setChip(p)}>{chip === p && <I.check size={13} />}{p}</button>)}
                 </div></div>
                 <div className="ds-row">
                   <label className="check"><input type="checkbox" checked={toggled} onChange={(e) => setToggled(e.target.checked)} /><span>Show safe zones</span></label>
@@ -314,8 +315,8 @@ export default function DesignSystem() {
                     <div className="card-top"><span className="card-id">BWM-201</span><span className="prio prio-high"><PriorityIcon level="high" />High</span></div>
                     <h4 className="card-title">Medium rectangle 300 × 250: fix CTA contrast, logo clearspace, headline size</h4>
                     <div className="card-meta">
-                      <span className="tag"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><rect x="1.5" y="2.5" width="11" height="8" rx="1" fill="none" stroke="currentColor" strokeWidth="1.5" /></svg>Display</span>
-                      <span className="due due-urgent"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 1l5 9.5H1z" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" /><path d="M6 4.5v2.5M6 8.6v.1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg><time dateTime="2026-11-02">Nov 2</time><span className="due-rel">Due tomorrow</span></span>
+                      <span className="tag"><I.display />Display</span>
+                      <span className="due due-urgent"><I.warning /><time dateTime="2026-11-02">Nov 2</time><span className="due-rel">Due tomorrow</span></span>
                     </div>
                   </div>
                 </div>
@@ -346,7 +347,7 @@ export default function DesignSystem() {
           <Block id="ds-tokens" title="Tokens" lede="The interface colour tokens as CSS custom properties, and the whole system as a JSON file.">
             <div className="ds-row">
               <a className="btn btn-primary" href="/birchway-tokens.json" download>
-                <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M7 1.5v8M3.5 6.5 7 10l3.5-3.5M2 12.5h10" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                <I.download />
                 Download tokens (JSON)
               </a>
               <CopyButton text={cssSnippet} label="Copy CSS variables" />
