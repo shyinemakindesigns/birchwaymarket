@@ -14,6 +14,7 @@ import Process from './pages/Process.jsx'
 import Reflection from './pages/Reflection.jsx'
 import BrandB from './pages/BrandB.jsx'
 import DesignSystem from './pages/DesignSystem.jsx'
+import BrandGraphics from './pages/BrandGraphics.jsx'
 import NotFound from './pages/NotFound.jsx'
 import ExportFrame from './pages/ExportFrame.jsx'
 import Thumbnail from './pages/Thumbnail.jsx'
@@ -51,6 +52,7 @@ export default function App() {
           <Route path="/board" element={<Board />} />
           <Route path="/process" element={<Process />} />
           <Route path="/brand-direction" element={<BrandB />} />
+          <Route path="/brand-graphics" element={<BrandGraphics />} />
           <Route path="/reflection" element={<Reflection />} />
           <Route path="/design-system" element={<DesignSystem />} />
           {import.meta.env.DEV && <Route path="/__export" element={<ExportFrame />} />}

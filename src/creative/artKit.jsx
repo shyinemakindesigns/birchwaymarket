@@ -2,13 +2,14 @@
 // TableArt composes them into the holiday table; the Brand graphics page
 // shows each one on its own, in three colourways, as downloadable SVG.
 // Elements draw around their own origin and take x/y/rotation/scale.
+// className="hl" marks highlights and texture, dropped in the line colourways.
 export const PIE_C = { crust: '#C98A3D', crustLight: '#DDA552', filling: '#8E1F30', plate: '#E7DCC2', plateRim: '#F6F0E1' }
 
 export function Pear({ x, y, r = 0, s = 1 }) {
   return (
     <g transform={`translate(${x} ${y}) rotate(${r}) scale(${s})`}>
       <path d="M0-62c13 0 17 19 19 35 21 17 27 52 11 75-14 19-46 19-60 0-16-23-10-58 11-75 2-16 6-35 19-35z" fill="#D8B24A" />
-      <path d="M-6-40c-6 14-6 24-14 34" stroke="#F0D27A" strokeWidth="6" strokeLinecap="round" fill="none" opacity=".7" />
+      <path className="hl" d="M-6-40c-6 14-6 24-14 34" stroke="#F0D27A" strokeWidth="6" strokeLinecap="round" fill="none" opacity=".7" />
       <path d="M0-62c0-10 2-17 6-22" stroke="#5B3A1E" strokeWidth="5" strokeLinecap="round" fill="none" />
       <path d="M5-78c12-10 26-8 32-2-10 8-22 9-32 2z" fill="#6E8F5E" />
     </g>
@@ -19,8 +20,8 @@ export function Clementine({ x, y, r = 34 }) {
   return (
     <g transform={`translate(${x} ${y})`}>
       <circle r={r} fill="#E07B2A" />
-      <circle r={r} fill="none" stroke="#C4621B" strokeWidth="2" strokeDasharray="1 6" opacity=".6" />
-      <circle cx={-r * 0.35} cy={-r * 0.35} r={r * 0.22} fill="#F2A15A" opacity=".8" />
+      <circle className="hl" r={r} fill="none" stroke="#C4621B" strokeWidth="2" strokeDasharray="1 6" opacity=".6" />
+      <circle className="hl" cx={-r * 0.35} cy={-r * 0.35} r={r * 0.22} fill="#F2A15A" opacity=".8" />
       <path d={`M${r * 0.1} ${-r * 0.95}c10-14 28-14 36-8-10 12-26 14-36 8z`} fill="#4E7A4F" />
     </g>
   )
@@ -33,7 +34,7 @@ export function Berries({ x, y }) {
       {pts.map(([bx, by], i) => (
         <g key={i}>
           <circle cx={bx} cy={by} r="10" fill="#9B2335" />
-          <circle cx={bx - 3} cy={by - 3} r="2.6" fill="#D96C7A" />
+          <circle className="hl" cx={bx - 3} cy={by - 3} r="2.6" fill="#D96C7A" />
         </g>
       ))}
     </g>
